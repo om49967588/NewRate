@@ -2,10 +2,8 @@
 import pandas
 import pandas as pd
 import requests
-import pyodbc
 import datetime
 from datetime import datetime as dt
-from datetime import date
 from M_RATE_NEW import get_rate_date_currency
 import logging
 
@@ -38,13 +36,13 @@ def get_today_and_tomorrow():
     print(result)
     for row in result:
         print (row)
-
+#1234
 if __name__ == '__main__':
     str_today, tomorrow = get_today_and_tomorrow()
     try:
         token ='1VPrxu0vjdZSGxQUXu0HtjNqJfaTf7vTbQJYxXzfz1V'
-        # dff = get_rate_date_currency(rate_date=str_today)
-        dff = get_rate_date_currency(rate_date='2023-07-19')
+        dff = get_rate_date_currency(rate_date=str_today)
+        # dff = get_rate_date_currency(rate_date='2023-07-19')
         df = pd.DataFrame(dff)                                 
         usd = f"美金  買 {df.iat[0, 1]:7.4f}  賣  {df.iat[0, 2]:7.4f}"  # f是拿來可以在""裡面用{}插入變數
         eur = f"歐元  買 {df.iat[3, 1]:7.4f}  賣  {df.iat[3, 2]:7.4f}" # df.loc[[1,3],["CURID","INRAT"]]是取索引1跟3的數值
